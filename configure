@@ -101,7 +101,7 @@ parse_command_line() {
 }
 
 _has_binary() {
-    command -v "${1}" >/dev/null 2>&1 || {
+        command -v "${1}" >/dev/null 2>&1 || {
         _log "ERROR" "${1} is not installed or not found in \$PATH"
         exit 1
     }
@@ -367,8 +367,7 @@ verify_ansible_hosts() {
             _log "ERROR" "The traefik load balancer IP '${BOOTSTRAP_METALLB_TRAEFIK_ADDR}' should not be the same as the IP for node '${!node_addr}'"
             exit 1
         fi
-
-        if ssh -q -o BatchMode=yes -o ConnectTimeout=5 "${!node_username}"@"${!var}" "true"; then
+        if ssh -q -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 "${!node_username}"@"${!var}" "true"; then
             _log "INFO" "SSH into host '${!var}' with username '${!node_username}' was successfull"
         else
             _log "ERROR" "SSH into host '${!var}' with username '${!node_username}'was NOT successful, did you copy over your SSH key?"
