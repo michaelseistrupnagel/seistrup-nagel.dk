@@ -29,9 +29,9 @@ main() {
 
     if [[ "${verify}" == 1 ]]; then
         verify_ansible_hosts
-        verify_metallb
+        #verify_metallb
         verify_kubevip
-        verify_addressing
+        #verify_addressing
         verify_age
         verify_git_repository
         verify_cloudflare
@@ -363,10 +363,10 @@ verify_ansible_hosts() {
             exit 1
         fi
 
-        if [[ "${!node_addr}" == "${BOOTSTRAP_METALLB_TRAEFIK_ADDR}" ]]; then
-            _log "ERROR" "The traefik load balancer IP '${BOOTSTRAP_METALLB_TRAEFIK_ADDR}' should not be the same as the IP for node '${!node_addr}'"
-            exit 1
-        fi
+        #if [[ "${!node_addr}" == "${BOOTSTRAP_METALLB_TRAEFIK_ADDR}" ]]; then
+        #    _log "ERROR" "The traefik load balancer IP '${BOOTSTRAP_METALLB_TRAEFIK_ADDR}' should not be the same as the IP for node '${!node_addr}'"
+        #    exit 1
+        #fi
         if ssh -q -o StrictHostKeyChecking=no -o ConnectTimeout=5 "${!node_username}"@"${!var}" "true"; then
             _log "INFO" "SSH into host '${!var}' with username '${!node_username}' was successfull"
         else
