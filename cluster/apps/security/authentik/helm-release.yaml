@@ -32,9 +32,6 @@ spec:
         sample_rate: 1
         environment: "kryptonian"
       postgresql:
-        host: "192.168.2.2"
-        name: "authentik"
-        user: "authentik"
         password: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
       redis:
         host: "redis.databases.svc.cluster.local"
@@ -42,7 +39,7 @@ spec:
         host: "smtp.eu.mailgun.org"
         port: 587
         use_tls: true
-        username: "authentik@mg.${MAIN_DOMAIN}"
+        username: "authentik@${MAIN_DOMAIN}"
         password: "${SECRET_MAILGUN_PASSWORD}"
         from: "no-reply@mg.${MAIN_DOMAIN}"
 
@@ -62,6 +59,7 @@ spec:
             - "id.${SECRET_DOMAIN}"
           secretName: ${SECRET_DOMAIN}-tls
     postgresql:
-      enabled: false
+      enabled: true
+      postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
-      enabled: false
+      enabled: true
