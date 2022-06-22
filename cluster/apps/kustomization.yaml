@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   # - system-upgrade
   - default
+  - databases
   - kube-system
   - networking
   - flux-system
   - security
-  - databases
