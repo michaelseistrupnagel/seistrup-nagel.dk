@@ -8,3 +8,4 @@ resources:
   - networking
   - flux-system
   - security
+  - databases
