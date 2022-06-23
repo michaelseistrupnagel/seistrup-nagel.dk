@@ -67,7 +67,7 @@ tasks:
   ingresses:
     desc: List all the helmreleases in your cluster
     cmds:
-      - kubectl get ingress {{.CLI_ARGS | default "-A"}
+      - kubectl get ingress {{.CLI_ARGS | default "-A"}}
   debug:
     desc: Debug helm release
     cmds:
