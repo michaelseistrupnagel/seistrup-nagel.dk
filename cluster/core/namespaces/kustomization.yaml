@@ -6,5 +6,5 @@ resources:
   - metallb-system.yaml
   - networking.yaml
   - system-upgrade.yaml
-  - security.yaml
   - databases.yaml
+  - security.yaml
